@@ -122,5 +122,99 @@ int main() {
         printf("❌ Atributo inválido.\n");
     }
 
+//Nível Aventureiro
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct Carta {
+    string nome;
+    int ataque;
+    int defesa;
+    int magia;
+};
+
+void compararCartas(Carta c1, Carta c2, int escolha) {
+    switch (escolha) {
+        case 1:
+            cout << "Comparando ataque..." << endl;
+            if (c1.ataque > c2.ataque)
+                cout << c1.nome << " venceu no ataque!" << endl;
+            else if (c1.ataque < c2.ataque)
+                cout << c2.nome << " venceu no ataque!" << endl;
+            else
+                cout << "Empate no ataque!" << endl;
+            break;
+        case 2:
+            cout << "Comparando defesa..." << endl;
+            if (c1.defesa > c2.defesa)
+                cout << c1.nome << " venceu na defesa!" << endl;
+            else if (c1.defesa < c2.defesa)
+                cout << c2.nome << " venceu na defesa!" << endl;
+            else
+                cout << "Empate na defesa!" << endl;
+            break;
+        case 3:
+            cout << "Comparando magia..." << endl;
+            if (c1.magia > c2.magia)
+                cout << c1.nome << " venceu na magia!" << endl;
+            else if (c1.magia < c2.magia)
+                cout << c2.nome << " venceu na magia!" << endl;
+            else
+                cout << "Empate na magia!" << endl;
+            break;
+        case 4:
+            cout << "Comparação total (ataque + defesa + magia):" << endl;
+            int total1 = c1.ataque + c1.defesa + c1.magia;
+            int total2 = c2.ataque + c2.defesa + c2.magia;
+            if (total1 > total2)
+                cout << c1.nome << " venceu na soma total!" << endl;
+            else if (total1 < total2)
+                cout << c2.nome << " venceu na soma total!" << endl;
+            else
+                cout << "Empate na soma total!" << endl;
+            break;
+        default:
+            cout << "Opção inválida!" << endl;
+    }
+}
+
+int main() {
+    Carta carta1, carta2;
+
+    // Cadastro das cartas
+    cout << "Digite os dados da Carta 1:\n";
+    cout << "Nome: ";
+    cin >> carta1.nome;
+    cout << "Ataque: ";
+    cin >> carta1.ataque;
+    cout << "Defesa: ";
+    cin >> carta1.defesa;
+    cout << "Magia: ";
+    cin >> carta1.magia;
+
+    cout << "\nDigite os dados da Carta 2:\n";
+    cout << "Nome: ";
+    cin >> carta2.nome;
+    cout << "Ataque: ";
+    cin >> carta2.ataque;
+    cout << "Defesa: ";
+    cin >> carta2.defesa;
+    cout << "Magia: ";
+    cin >> carta2.magia;
+
+    int opcao;
+    do {
+        cout << "\nEscolha o atributo para comparar:\n";
+        cout << "1 - Ataque\n2 - Defesa\n3 - Magia\n4 - Soma Total\n0 - Sair\n";
+        cout << "Opção: ";
+        cin >> opcao;
+
+        if (opcao != 0)
+            compararCartas(carta1, carta2, opcao);
+
+    } while (opcao != 0);
+
     return 0;
 }
